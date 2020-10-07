@@ -43,7 +43,7 @@
         
         <TextBlock x:Name="resultadoTextBlock"
                    HorizontalAlignment="Left"
-                   Margin="378,71,0,0"
+                   Margin="382,64,0,0"
                    TextWrapping="Wrap"
                    VerticalAlignment="Top" />
 

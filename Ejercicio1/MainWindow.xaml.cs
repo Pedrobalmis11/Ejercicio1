@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace Ejercicio1
 {
@@ -25,7 +15,7 @@ namespace Ejercicio1
         {
             numAleatorio = generarNum();
             InitializeComponent();
-            
+
         }
 
         private int generarNum()
@@ -40,18 +30,24 @@ namespace Ejercicio1
 
         private void comprobarButton_Click(object sender, RoutedEventArgs e)
         {
-           
-            if(int.Parse(numeroTextBox.Text) == numAleatorio)
+            try
             {
-                resultadoTextBlock.Text = "Has acertado";
+                if (int.Parse(numeroTextBox.Text) >= 0 && int.Parse(numeroTextBox.Text) <= 100)
+                {
+                    if (numeroTextBox.Text != "")
+                    {
+                        if (int.Parse(numeroTextBox.Text) == numAleatorio) resultadoTextBlock.Text = "¡Has acertado!";
+                        else if (int.Parse(numeroTextBox.Text) > numAleatorio) resultadoTextBlock.Text = "¡Te has pasado!";
+                        else resultadoTextBlock.Text = "¡Te has quedado corto!";
+                    }
+                    else resultadoTextBlock.Text = "¡El campo está vacio, introduce un número!";
+                }
+                else resultadoTextBlock.Text = "¡El número debe ser entre 0 y 100!";
 
-            }else if(int.Parse(numeroTextBox.Text) > numAleatorio)
-            {
-                resultadoTextBlock.Text = "Te has pasado";
             }
-            else
+            catch (FormatException)
             {
-                resultadoTextBlock.Text = "Te has quedado corto";
+                resultadoTextBlock.Text = "¡El valor debe ser un número!";
             }
 
         }
